@@ -1,4 +1,4 @@
-name: GitHub Action 실행해보기 #01
+name: GitHub Action 실행해보기-01
 on:
   push:
     branches:

@@ -10,3 +10,15 @@ jobs:
     steps:
       - name: Hello World 찍기
         run: echo "Hello World"
+      - name: 여러명렁어 문장 작석하기
+        run: |
+          echo "Good"
+          echo "Morning"
+      - name: GitHub Action 자체에 저장되어있는 변수 사용
+        run: |
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+      - name: GitHub Actions Secret 변수 사용
+        run: |
+          echo ${{ secrets.MY_NAME }}
+          echo ${{ secrets.MY_HOBBY }}
