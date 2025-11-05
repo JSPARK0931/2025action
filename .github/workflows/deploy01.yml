@@ -1,4 +1,4 @@
-name: GitHub Action 실행해보기
+name: GitHub Action 실행해보기 #01
 on:
   push:
     branches:
@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Hello World 찍기
-        run: echo "Hello World"
+        run: echo "Hello World 01"
