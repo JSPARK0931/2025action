@@ -5,18 +5,21 @@ on:
       - main
 
 jobs:
-  My-Deploy-jobs:
+  My-deploy-Job:
     runs-on: ubuntu-latest
     env:
       REMOTE_DIR: /home/ubuntu/2025action
 
     steps:
-      - name: ssh to EC2
+      - name: ssh to ec2
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd ${{env.REMOTE_DIR}}
-            pwd
+            cd ${{ env.REMOTE_DIR }}
+            sudo git config --global --add safe.directory /home/ubuntu/2025action
+            sudo git pull
+            sudo npm ci
+            sudo npm run build

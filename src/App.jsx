@@ -1,7 +1,12 @@
 import React from "react";
 
 function App() {
-  return <div>안녕하세요.반갑습니다.6</div>;
+  return (
+    <div>
+      <h3>title</h3>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, eos.
+    </div>
+  );
 }
 
 export default App;
