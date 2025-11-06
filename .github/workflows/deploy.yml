@@ -1,4 +1,4 @@
-name: GitHub Action 실행해보기
+name: react deploy
 on:
   push:
     branches:
@@ -7,18 +7,16 @@ on:
 jobs:
   My-Deploy-jobs:
     runs-on: ubuntu-latest
+    env:
+      REMOTE_DIR: /home/ubuntu/2025action
+
     steps:
-      - name: Hello World 찍기
-        run: echo "Hello World"
-      - name: 여러명렁어 문장 작성하기
-        run: |
-          echo "Good"
-          echo "Morning"
-      - name: GitHub Action 자체에 저장되어있는 변수 사용
-        run: |
-          echo $GITHUB_SHA
-          echo $GITHUB_REPOSITORY
-      - name: GitHub Actions Secret 변수 사용하기
-        run: |
-          echo ${{ secrets.MY_NAME }}
-          echo ${{ secrets.MY_HOBBY }}
+      - name: ssh to EC2
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd ${{env.REMOTE_DIR}}
+            pwd
